@@ -1,0 +1,82 @@
+<!-- movie.html -->
+<div class="listing-wrap">
+
+<div class="row">
+  <div class="col-md-12">
+     <div ng-bind-html="movie.listing.embed_url | html"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="listing-images">
+        <img
+            ng-repeat="picture in movie.pictures"
+            ng-show="picture.photo"
+            ng-src="{{ picture.photo }}"
+            class="img-responsive">
+        <img
+            ng-show="!movie.listing.pictures"
+            src="https://placeimg.com/400/600/arch"
+            class="img-responsive">
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="listing-description">
+        <h2>{{ movie.listing.name }}</h2>
+        <div class="listing-details">
+          <span class="categories" ng-repeat="category in movie.listing.categories">
+            {{ category.name }}{{$last ? '' : ', '}}
+          </span>
+          <span class="divider"> | </span>
+          <span>{{ movie.listing.length }} min</span>
+          <span class="divider"> | </span>
+          <span>{{ movie.listing.released | date : short}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="listing-description">
+        {{ movie.listing.description }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="comments-container">
+      <span class="comments-header">Comments</span>
+      <form ng-show="currentUser.id" ng-submit="movie.createComment()" class="create-comment">
+        <div class="form-group">
+          <textarea ng-model="movie.commentData.text"></textarea>
+        </div>
+        <div class="text-left">
+          <button type="submit" class="btn btn-primary">Comment</button>
+        </div>
+      </form>
+      <div class="listing-comments" ng-show="movie.listing.actions.comments.length > 0">
+        <div class="comment clearfix" ng-repeat="comment in movie.listing.actions.comments | orderBy:'-dt_create'">
+          <!-- show an avatar if it exists or a placeholder image -->
+          <div class="comment-avatar pull-left">
+            <div ng-show="comment.picture">
+              <img ng-src="{{ comment.picture }}" class="img-responsive img-circle">
+            </div>
+            <div ng-show="!comment.picture">
+              <img src="https://placeimg.com/60/60/people" class="img-responsive img-circle">
+            </div>
+          </div>
+
+          <div class="comment-content">
+            <strong>{{ comment.displayName }}</strong>
+            <p>{{ comment.text }}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>

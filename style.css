@@ -1,0 +1,347 @@
+/* style.css */
+/* main styles ------------------------------------------*/
+html{
+  height: 100%;
+}
+
+body{
+  background:#EFEFEF;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6  {
+    font-weight: 100;
+    color: #11171C;
+    letter-spacing: 2px;
+}
+::-webkit-input-placeholder {
+   color: white !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white !important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white !important;
+}
+
+:-ms-input-placeholder {
+   color: white !important;
+}
+
+a[ui-sref],
+a[ng-click]  { cursor:pointer; }
+/* footer ---------------------------------------------- */
+footer      {
+  position: relative;
+  margin-top: 20px;
+  padding-top: 20px;
+  bottom: 20px;
+}
+
+/* header ---------------------------------------------- */
+
+.navbar{
+    border: none;
+    border-radius: 0px;
+    margin-bottom: 0px;
+    margin-left: -20px;
+    height: 100%;
+    min-width: 230px;
+    position: fixed;
+}
+.navbar-nav,
+.navbar-nav > li,
+.navbar-left,
+.navbar-right,
+.navbar-header
+{float:none !important;}
+
+.fill{
+  height: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar{
+    position: initial;
+    display: table;
+      border: none;
+      border-radius: 0px;
+      margin-bottom: 0px;
+      margin-left: -20px;
+      height: 100%;
+      max-width: 100%;
+  }
+  .nav-col{
+      padding: 0px;
+      margin: 0px;
+  }
+}
+
+.navbar-header {
+  padding: 10px 20px 0px 32px;
+}
+
+.navbar-form {
+  background-color: #CC4D4D;
+  margin: 0px;
+  padding: 30px 20px;
+}
+.input-group-addon {
+  background: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  border-radius: 0;
+}
+.search-form input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    outline: none !important;
+    outline-color: transparent;
+    outline-style: none;
+    color: white;
+}
+
+/*Overwrite for tyepahead text*/
+.navbar-form a:hover  { color:#333 !important; }
+
+.navbar-links {
+    list-style: none;
+    font-weight: 200;
+    padding-bottom: 8px
+}
+.navbar-links li{
+  padding-bottom: 10px;
+}
+.navbar-links i{
+  width: 12px;
+  padding-right: 25px;
+}
+.navbar-links a:link,
+.navbar-links a:visited,
+.navbar-links a:active,
+.navbar-links a[ui-sref],
+.navbar-links a[ng-click]{
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.navbar-links a:hover{
+  text-decoration: none;
+    color: gray;
+    font-weight: bolder;
+}
+
+.content-view{
+  margin-left: 50px;
+}
+
+/* Home -------------------------------------- */
+.sort-controls{
+    margin-top: 20px;
+}
+.sort-controls span a:link,
+.sort-controls span a:visited,
+.sort-controls span a:active{
+  text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.sort-controls span a:hover{
+  text-decoration: none;
+    color: gray;
+    font-weight: bolder;
+}
+/* movies ------------------------------------ */
+.movie-container {
+    max-width: 1200px;
+    display: table;
+}
+.movie-box  {
+  display: table-cell;
+  margin-right: 25px;
+  width: 160px;
+  height: 320px;
+}
+
+.movie-img img {
+  display:block;
+  margin:0 auto 10px;
+  width: 135px;
+  height: 187px;
+}
+
+.movie-content a  {
+  font-weight: bold;
+  font-size:12px;
+  color:#696969;
+  display:block;
+}
+
+.categoryContainer {
+    height: 18px;
+    font-size: 11px;
+    overflow: hidden;
+
+}
+
+/* Movie Tooltip ------------------------------------- */
+.tooltip.right {
+  margin-left: 40px;
+  /*margin-top: -80px;*/
+}
+.tooltip-inner {
+    text-align: left;
+    max-width: 350px;
+    width: 350px;
+    padding: 30px;
+}
+.tooltip-name{
+  font-size: 12px;
+}
+.tooltip-categories{
+  padding-bottom: 6px;
+}
+.tooltip-description{
+  border-bottom: 1px solid #11171C;
+  padding-bottom: 8px;
+}
+.tooltip-comments{
+  padding: 8px 0px;
+  font-size: 18px;
+}
+.tooltip-comments i{
+  padding-right: 4px;
+}
+/*Overlay*/
+.movie-layover{
+  position: absolute;
+  width: 135px;
+  height: 187px;
+  background-color: #11171C;
+  opacity: 0.6;
+  display: table-cell;
+  vertical-align: middle;
+}
+.movie-layover i{
+  font-size: 40px;
+  margin-left: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+/* listing ------------------------------------- */
+.listing-wrap       {
+  /*background:#FFF;*/
+  border:1px solid #ECECEC;
+  border-radius:3px;
+  padding:30px;
+}
+
+.listing-images img   {
+  width: 184px;
+  height: 274px;
+  border-radius:3px;
+  margin-bottom:20px;
+}
+
+.listing-description {
+  font-size: 18px;
+  margin-bottom:20px;
+  max-width: 650px;
+  font-weight: 200;
+  color: #24313c;
+}
+.listing-description h2 {
+  font-weight: 200;
+  font-size: 40px;
+}
+.listing-comments   {
+  margin-top: 20px;
+  background:#FEFEFE;
+  border-radius:3px;
+  padding:20px;
+}
+
+.listing-comments .comment  {
+  margin-bottom:30px;
+  padding-bottom:20px;
+  padding-top:20px;
+  border-bottom:1px solid #ECECEC;
+}
+
+.listing-details{
+    font-weight: bolder;
+    font-size: 16px;
+    color: #11171C
+}
+.divider{
+    color: lightgrey;
+    font-weight: 100;
+    padding: 0px 6px;
+}
+
+.comment .comment-avatar  {
+  margin-right:30px;
+  text-align:center;
+}
+.comment .comment-avatar img  {
+  margin:0 auto 10px;
+}
+
+.create-comment textarea {
+    min-width: 500px;
+    min-height: 100px;
+    max-width: 550px;
+}
+.comments-header{
+  font-weight: 100;
+  font-size: 25px;
+  color: #24313c;
+}
+
+.listing-extra    {
+  border:10px solid #E4F3D9;
+  border-radius:3px;
+  padding:20px;
+}
+
+.listing-extra h1 {
+  font-size:20px;
+  line-height:1.2;
+  color:#333;
+  margin:0 0 15px;
+}
+
+
+/* global ------------------------------------ */
+.page-header {
+    padding-bottom: 9px;
+    margin: 10px 0 20px;
+    border: none;
+}
+.page-title {
+  color: #11171C;
+  font-size: 32px;
+  font-weight: 800;
+}
+.light {
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+.heavy {
+  font-weight: 600;
+}

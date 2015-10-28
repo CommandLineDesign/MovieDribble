@@ -1,0 +1,81 @@
+<!-- home.html -->
+<div class="page-header">
+<div class="row">
+  <div class="col-md-4">
+    <span class="page-title">Discover</span>
+  </div>
+  <div class="col-md-4 sort-controls">
+    <span>
+      <a href="#" ng-click="home.sortType = 'released'; home.reversed = !home.reversed;">
+        Release date
+        <span ng-show="home.sortType == 'released' && !home.reversed" class="fa fa-caret-down"></span>
+        <span ng-show="home.sortType == 'released' && home.reversed" class="fa fa-caret-up"></span>
+      </a>
+      | Popularity</span>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+</div>
+
+<div class="row movie-container">
+
+  <!-- loop over home.movies here -->
+  <div class="col-sm-2 movie-box" ng-repeat="movie in home.movies | toArray : false | orderBy: home.sortType : home.reversed">
+      <!--  movie image -->
+      <a ng-init="movie.showLayover = false" ng-mouseenter="movie.showLayover = true" ng-mouseleave="movie.showLayover = false" class="movie-img" ui-sref="movie({ id: movie.instance.id, name: movie.instance.name })"  tooltip-placement="right"  uib-tooltip-template="'movieToolTipTemplate.html'">
+        <div  class="movie-layover" ng-show="movie.showLayover">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+        <img ng-src="{{ movie.instance.pictures[0].photo }}" ng-show="movie.instance.pictures">
+        <img src="https://placeimg.com/400/600/arch" ng-show="!movie.instance.pictures">
+      </a>
+      <!--  movie content -->
+      <div class="movie-content">
+        <a ui-sref="movie({ id: movie.instance.id, name: beautyEncode(movie.instance.name) })">
+          {{ movie.instance.name }}
+        </a>
+        <div class="categoryContainer">
+          <span class="categories" ng-repeat="category in movie.instance.categories">
+            {{ category.name }}{{$last ? '' : ', '}}
+          </span>
+        </div>
+        <div class="runTime">
+          {{ movie.instance.length }} min
+        </div>
+    </div>
+    <script type="text/ng-template" id="movieToolTipTemplate.html">
+      <div class="row">
+        <div class="col-xs-9">
+          <span class="tooltip-name">{{ movie.instance.name }}</span>
+        </div>
+        <div class="col-xs-3">
+          <span class="light">{{ movie.instance.length }} min</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 tooltip-categories">
+          <span class="light" ng-repeat="category in movie.instance.categories">
+            {{ category.name }}{{$last ? '' : ', '}}
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="tooltip-description">
+            <span>
+              {{ movie.instance.description }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <span class="tooltip-comments">
+            <i class="fa fa-comments-o"></i>{{ movie.instance.actions.comments.length }}
+          </span>
+        </div>
+      </div>
+  </script>
+  </div>
+
+</div>

@@ -1,0 +1,113 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counsyl Movie Dribble</title>
+
+    <!-- required by ui-router -->
+    <base href="/">
+
+    <!-- CSS -->
+    <!-- load up bootswatch-cerulean and our custom styles -->
+	<link rel="stylesheet" href="./bower_components/bootswatch/slate/bootstrap.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./style.css">
+
+    <!-- JS -->
+    <!-- load the stamplay sdk and configure it -->
+	<script src="./bower_components/stamplay-js-sdk/dist/stamplay.min.js"></script>
+	<script>
+	    Stamplay.init('counsylmoviedribble');   // initiate stamplay app with app name
+	</script>
+
+	<!-- JS Dependencies -->
+	<script src="./bower_components/angular/angular.min.js"></script>
+	<script src="./bower_components/angular-stamplay/angular-stamplay.js"></script>
+	<script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="./bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+	<script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="./bower_components/algoliasearch/dist/algoliasearch.angular.js"></script>
+	<script src="./bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
+	<!-- Angular Components -->
+	<script src="./app/components/home/home.js"></script>
+	<script src="./app/components/admin/admin.js"></script>
+	<script src="./app/components/movie/movie.js"></script>
+	<script src="./app/components/grid/grid.js"></script>
+	<script src="./app/components/authenticate/authenticate.js"></script>
+
+	<!-- Angular Services -->
+	<script src="./app/shared/MovieService.js"></script>
+	<script src="./app/shared/UserService.js"></script>
+
+	<!-- Core App -->
+	<script src="./app/app.routes.js"></script>
+	<script src="./app/app.js"></script>
+
+</head>
+<body ng-app="counsylmoviedribble" ng-controller="MainController as main">
+
+<!-- index.html -->
+<!-- HEADER AND NAV -->
+<header></header>
+<div class="col-md-2 fill">
+
+		<nav class="navbar navbar-default" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<form class="search-form navbar-form navbar-left">
+			  <div class="form-group">
+				  <div class="input-group">
+				    <input
+				      type="text"
+				      class="form-control"
+				      ng-model="main.query"
+				      placeholder="Search Movies..."
+				      typeahead="movie as movie.name for movie in main.searchMovies($viewValue)"
+				      typeahead-on-select="main.searchPicked($item, $model, $label)">
+				      <div class="input-group-addon">
+				        <span class="glyphicon glyphicon-search"></span>
+				      </div>
+				  </div>
+			  </div>
+			</form>
+			<p class="navbar-header">
+				User
+			</p>
+			<ul class="navbar-links" ng-show="!currentUser.id">
+				<li><a ui-sref="authenticate"><i class="fa fa-user-plus"></i> Register</a></li>
+				<li><a ui-sref="authenticate"><i class="fa fa-sign-in"></i> Sign in</a></li>
+			</ul>
+			<ul class="navbar-links" ng-show="currentUser.id">
+				<li><a ng-click="main.logout()"><i class="fa fa-sign-out"></i> Logout</a></li>
+				<li><a ui-sref="admin"><i class="fa fa-cogs"></i> Admin</a></li>
+			</ul>
+			<p class="navbar-header">
+				Main
+			</p>
+			<ul class="navbar-links">
+				<li><a ui-sref="home"><i class="fa fa-play-circle"></i> Playing</a></li>
+				<li><a ui-sref="home"><i class="fa fa-film"></i> Discover</a></li>
+				<li><a ui-sref="home"><i class="fa fa-bolt"></i> Activity</a></li>
+				<li><a ui-sref="home"><i class="fa fa-line-chart"></i> Top Charts</a></li>
+				<li><a ui-sref="home"><i class="fa fa-calendar-plus-o"></i> New Releases</a></li>
+			</ul>
+		</nav>
+
+</div>
+<div class="col-md-8">
+<!-- ui-router will inject our component views here -->
+	<main class="content-view">
+	    <div ui-view></div>
+	    <footer class="text-center">
+		    © 2015 Counsyl Movie Dribble
+		</footer>
+	</main>
+	<!-- FOOTER -->
+</div>
+<div class="col-md-2">
+</div>
+</body>
+</html>

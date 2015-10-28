@@ -1,0 +1,81 @@
+<div class="page-header text-center">
+  <h1>Admin Tools</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+  <div class="well">
+    <!-- create a product form -->
+    <div class="page-header text-center">
+      <h3>Create a Movie</h3>
+    </div>
+
+    <form id="createMovieForm" ng-submit="admin.createMovie()">
+      <!-- name -->
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" ng-model="admin.movieData.name" required>
+      </div>
+
+      <!-- length -->
+      <div class="form-group">
+        <label>Length</label>
+        <input type="text" class="form-control" ng-model="admin.movieData.length" required>
+      </div>
+
+      <!-- Relase Date -->
+      <div class="form-group">
+        <label>Release Date</label>
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="admin.movieData.released" is-open="admin.datepicker.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required="required">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="admin.datepicker.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+      <!-- price -->
+      <div class="form-group">
+        <label>Embed URL</label>
+        <input type="text" class="form-control" ng-model="admin.movieData.embed_url" required>
+      </div>
+
+      <!-- category -->
+      <div class="form-group">
+        <label>Category</label>
+        <select class="form-control" ng-model="admin.movieData.categories"
+          ng-options="category.instance.id as category.instance.name for category in admin.categories" multiple="true">
+        </select>
+      </div>
+
+      <!-- description -->
+      <div class="form-group">
+        <label>Description</label>
+        <textarea rows="5" class="form-control" ng-model="admin.movieData.description" required></textarea>
+      </div>
+
+      <!-- pictures -->
+      <div class="form-group">
+        <label>Pictures</label>
+        <div class="btn btn-sm btn-primary" ngf-select="admin.uploadPictures($files)" ng-model="pictures" accept="image/*" ngf-max-size="1MB" multiple>
+          Select Files
+        </div>
+      </div>
+
+      <!-- show a preview -->
+      <div class="well" ng-show="pictures">
+        <img class="img-responsive" ngf-src="pictures">
+      </div>
+
+      <!-- show the success message and a link -->
+      <div class="alert alert-success" ng-show="admin.successMessage">
+        {{ admin.successMessage }}
+        <a ui-sref="Movie({ id: admin.newMovieId, name: admin.newMovieName })">View it now!</a>
+      </div>
+
+      <!-- submit -->
+      <button type="submit" class="btn btn-primary btn-block">Add Movie</button>
+    </form>
+
+  </div>
+  </div>
+</div>

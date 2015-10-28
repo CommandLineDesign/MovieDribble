@@ -1,0 +1,31 @@
+{
+  "name": "CounsylMovieDribble",
+  "authors": [
+    "commandlinedesign <commandlinedesign@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "http://counsylmoviedribble.stamplayapp.com/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stamplay-js-sdk": "~1.3.1",
+    "angular": "~1.4.7",
+    "angular-stamplay": "*",
+    "angular-ui-router": "ui-router#~0.2.15",
+    "ng-file-upload": "~9.1.1",
+    "angular-sanitize": "~1.4.7",
+    "ui.bootstrap": "~0.14.3",
+    "angular-bootstrap": "~0.14.3",
+    "algoliasearch": "~3.9.0",
+    "angular-toArrayFilter": "~1.0.1",
+    "bootswatch": "~3.3.5+4"
+  }
+}
